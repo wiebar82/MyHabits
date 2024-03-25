@@ -14,5 +14,7 @@
         public abstract void AddRating(float rating);
 
         public abstract void AddRating(string rating);
+
+        public abstract void AddRating(int time);
     }
 }
