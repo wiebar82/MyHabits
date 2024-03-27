@@ -5,10 +5,11 @@ Console.WriteLine("Welcome in MyHabits aplication!");
 Console.WriteLine();
 
 var user = new UserRatingInFile("Bartek", "Wieczorek");
-user.ratingAdd += UserRatingAdded;
+user.RatingAdd += UserRatingAdded;
 void UserRatingAdded(object sender, EventArgs e)
 {
     Console.WriteLine("Dodano nową ocenę dla "+ user.UserName + " " + user.UserLast);
+    Console.WriteLine();
 }
 
 Console.WriteLine();
@@ -29,5 +30,6 @@ while (true)
     catch (Exception ex)
     {
         Console.WriteLine($"Wyjątek: {ex.Message}");
+        Console.WriteLine();
     }
 }

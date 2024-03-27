@@ -22,7 +22,9 @@
             else
             {
                 throw new Exception("Nieprawidłowa wartość!");
+
             }
+            
         }
 
         public abstract void AddRating(int time);

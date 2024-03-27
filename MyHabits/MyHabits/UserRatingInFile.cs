@@ -10,7 +10,7 @@ namespace MyHabits
         }
 
         public delegate void RatingAddDelegate(object sender, EventArgs e);
-        public event RatingAddDelegate ratingAdd;
+        public event RatingAddDelegate RatingAdd;
         public override void AddRating(float rating)
         {
             if(rating >= 0 && rating <= 6)
@@ -18,9 +18,9 @@ namespace MyHabits
                 using (var writer = File.AppendText(fileName))
                 {
                     writer.WriteLine(rating);
-                    if(ratingAdd != null) 
+                    if(RatingAdd != null) 
                     {
-                        ratingAdd(this, new EventArgs());
+                        RatingAdd(this, new EventArgs());
                     }
                 }
             }
@@ -35,9 +35,9 @@ namespace MyHabits
             throw new NotImplementedException();
         }
 
-        public override void AddRating(string rating)
-        {
-            throw new NotImplementedException();
-        }
+        //public override void AddRating(string rating)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }
