@@ -25,7 +25,25 @@ while (true)
 
     try
     {
+      //  if (input >= 0 && input < 7)
         user.AddRating(input);
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Wyjątek: {ex.Message}");
+        Console.WriteLine();
+    }
+
+    Console.WriteLine("A ile dziś kodowałeś? (Podaj ocenę jako liczbę minut.)");
+    var input2 = Console.ReadLine();
+    if (input2 == "q") 
+    {
+        break;
+    }
+    try
+    {
+        int timeInput = Int32.Parse(input2);
+        user.AddTimeRating(timeInput);
     }
     catch (Exception ex)
     {

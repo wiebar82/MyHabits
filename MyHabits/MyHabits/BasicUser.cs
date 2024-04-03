@@ -27,6 +27,7 @@
             
         }
 
-        public abstract void AddRating(int time);
+        public abstract void AddTimeRating(int time);
+
     }
 }
