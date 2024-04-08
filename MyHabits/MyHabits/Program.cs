@@ -1,7 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using MyHabits;
 
-Console.WriteLine("Welcome in MyHabits aplication!");
+Console.WriteLine("Witaj w programie MyHabits!");
 Console.WriteLine();
 
 var user = new UserRatingInFile("Bartek", "Wieczorek");
@@ -16,38 +16,49 @@ Console.WriteLine();
 
 while (true)
 {
-    Console.WriteLine("Podaj ocenę: ");
+    Console.WriteLine("Co chcesz zrobić: ");
+    Console.WriteLine("[D]odaj ocenę.");
+    Console.WriteLine("[P]okaż statystyki");
+    Console.WriteLine("[W]yjście]");
+    Console.WriteLine();
+    Console.WriteLine("Wybież odpowiednią literę.");
+
     var input = Console.ReadLine();
-    if (input == "q")
+    if (input == "w" || input == "W")
     {
         break;
     }
+    else if (input == "d" || input == "D")
+    {
+        Console.WriteLine("Podaj ocenę: ");
+        var input2 = Console.ReadLine();
+        try
+        {
+            //if (input2 >= 0 && input2 < 7)
+            user.AddRating(input2);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Wyjątek: {ex.Message}");
+            Console.WriteLine();
+        }
 
-    try
-    {
-      //  if (input >= 0 && input < 7)
-        user.AddRating(input);
+        Console.WriteLine("A ile dziś kodowałeś? (Podaj ocenę jako liczbę minut.)");
+        var input3 = Console.ReadLine();
+        if (input2 == "q")
+        {
+            break;
+        }
+        try
+        {
+            int timeInput = Int32.Parse(input2);
+            user.AddTimeRating(timeInput);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Wyjątek: {ex.Message}");
+            Console.WriteLine();
+        }
     }
-    catch (Exception ex)
-    {
-        Console.WriteLine($"Wyjątek: {ex.Message}");
-        Console.WriteLine();
-    }
-
-    Console.WriteLine("A ile dziś kodowałeś? (Podaj ocenę jako liczbę minut.)");
-    var input2 = Console.ReadLine();
-    if (input2 == "q") 
-    {
-        break;
-    }
-    try
-    {
-        int timeInput = Int32.Parse(input2);
-        user.AddTimeRating(timeInput);
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine($"Wyjątek: {ex.Message}");
-        Console.WriteLine();
-    }
+    
 }
