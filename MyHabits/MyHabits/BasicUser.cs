@@ -1,4 +1,6 @@
-﻿namespace MyHabits
+﻿using System.Security.Cryptography.X509Certificates;
+
+namespace MyHabits
 {
     public abstract class BasicUser : IUser
     {
@@ -15,19 +17,32 @@
 
         public virtual void AddRating(string rating)
         {
-            if(float.TryParse(rating, out float result))
+            if (float.TryParse(rating, out float result))
             {
                 this.AddRating(result);
             }
             else
             {
-                throw new Exception("Nieprawidłowa wartość!");
-
+                string ratingInSmallCharacter = rating.ToLower();
+                switch (ratingInSmallCharacter)
+                {
+                    case "mini":
+                        AddRating(1.75f);
+                        break;
+                    case "midi":
+                        AddRating(3.5f);
+                        break;
+                    case "max":
+                        AddRating(5.75f);
+                        break;
+                    default:
+                        throw new Exception("Nieprawidłowa wartość!");
+                }
             }
-            
+
         }
 
-        public abstract void AddTimeRating(int time);
-
+    public abstract void AddTimeRating(int time);
     }
 }
+

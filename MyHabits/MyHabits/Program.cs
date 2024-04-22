@@ -21,7 +21,7 @@ while (true)
     Console.WriteLine("[P]okaż statystyki");
     Console.WriteLine("[W]yjście]");
     Console.WriteLine();
-    Console.WriteLine("Wybież odpowiednią literę.");
+    Console.WriteLine("Wybież opcje.");
 
     var input = Console.ReadLine();
     if (input == "w" || input == "W")
@@ -31,11 +31,10 @@ while (true)
     else if (input == "d" || input == "D")
     {
         Console.WriteLine("Podaj ocenę: ");
-        var input2 = Console.ReadLine();
+        input = Console.ReadLine();
         try
         {
-            //if (input2 >= 0 && input2 < 7)
-            user.AddRating(input2);
+            user.AddRating(input);
         }
         catch (Exception ex)
         {
@@ -44,14 +43,11 @@ while (true)
         }
 
         Console.WriteLine("A ile dziś kodowałeś? (Podaj ocenę jako liczbę minut.)");
-        var input3 = Console.ReadLine();
-        if (input2 == "q")
-        {
-            break;
-        }
+        input = Console.ReadLine();
+     
         try
         {
-            int timeInput = Int32.Parse(input2);
+            int timeInput = Int32.Parse(input);
             user.AddTimeRating(timeInput);
         }
         catch (Exception ex)

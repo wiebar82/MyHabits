@@ -47,6 +47,12 @@ namespace MyHabits
             else if (time >= 0 && time < 10)
             {
                 Console.WriteLine("Za krótko dziś kodowałeś :(");
+                Console.WriteLine();
+            }
+            else if (time > 200)
+            {
+                Console.WriteLine("Nie przesadasz! ;)");
+                Console.WriteLine();
             }
             else
             {
